@@ -1,6 +1,7 @@
 from pathlib import Path
 import requests
 import time
+import json
 # url = 'https://5ka.ru/special_offers/'
 
 
@@ -51,14 +52,20 @@ class Parse5ka:
     def run(self):
         for product in self._parse(self.start_url):
             product_path = self.save_path.joinpath(f"{product['id']}.json")
-            self.save(product, product_path)
+            self._save(product, product_path)
 
 
-    def _parse(self,url):
-        pass
+    def _parse(self,url:str):
+        while url:
+            response = self._get_response(url)
+            data = response.json()
+            # data = json.loads(response.text)
+            url = data['next']
+            for product in data['results']:
+                yield product
 
-    def save(self, data, file_path):
-        pass
+    def _save(self, data:dict, file_path:Path):
+        file_path.write_text(json.dumps(data, ensure_ascii=False))
 
 
 
@@ -69,3 +76,4 @@ if __name__ == '__main__':
         save_path.mkdir()
 
     parser = Parse5ka(url, save_path)
+    parser.run()
