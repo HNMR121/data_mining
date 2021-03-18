@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/gb_parse" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/products/3808.json" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/products/3902.json" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/sqlalchemy.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tp.py" charset="UTF-8" />
+    <file url="PROJECT" charset="windows-1251" />
+  </component>
+</project>
